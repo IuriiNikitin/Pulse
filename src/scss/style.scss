@@ -9,7 +9,13 @@ html {
 .container {
     max-width: 950px;
     margin: 0 auto;
+    padding: 0 20px 0 20px;
+    box-sizing: content-box;
 }
 @import "../scss/blocks/promo";
 @import "../scss/blocks/header";
 @import "../scss/blocks/buttons";
+@import "../scss/blocks/titles";
+@import "../scss/blocks/advantages";
+
+@import "../scss/base/media";
