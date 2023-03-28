@@ -1,10 +1,10 @@
-@media (max-width: 1199.98px) {
-    .promo {
-        &__wrapper {
-            align-items: center;
-        }
-    }
-}
+// @media (max-width: 1199.98px) {
+//     .promo {
+//         &__wrapper {
+//             align-items: center;
+//         }
+//     }
+// }
 
 @media (max-width: 991.98px) {
     .advantages {
@@ -23,17 +23,44 @@
 }
 
 @media (max-width: 767.98px) { //mobile
+    .title {
+        font-size: 30px;
+        &_left {
+            text-align: center;
+            br {
+                display: none;
+            }
+        }
+    }
     .header {
         &__official {
             display: none;
         }
     }
     .promo {
+        &__wrapper {
+            align-items: center;
+        }
         &__header {
             font-size: 36px;
         }
         &__subheader {
             font-size: 19px;
+        }
+    }
+
+    .advantages {
+        padding-top: 50px;
+    }
+
+    .consultation {
+        padding: 50px 0;
+        &__descr {
+            text-align: center;
+        }
+        .feed-form {
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
@@ -43,6 +70,13 @@
     .container {
         padding: 0 12px 0 12px;
     }
+    .title {
+        font-size: 20px;
+        &_left {
+            line-height: 35px;
+        }
+    }
+
     .header {
         align-items:center;
         justify-content: space-around;
@@ -64,13 +98,14 @@
         padding-top: 12px;
         padding-bottom: 50px;
         &__wrapper {
-            margin-top: 35px;
+            margin-top: 60px;
         }
         &__header {
             font-size: 30px;
         }
         &__subheader {
             font-size: 20px;
+            margin-top: 13px;
         }
         &__icons {
             width: auto;
@@ -84,8 +119,17 @@
             }
         }
         .button_main {
-            width: 230px;
+            width: 250px;
             font-size: 14px;
         }
+    }
+    .consultation {
+        &__descr {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        // .feed-form {
+        //     max-width: 250px;
+        // }
     }
 }
