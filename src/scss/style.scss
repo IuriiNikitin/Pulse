@@ -11,6 +11,7 @@ html {
     margin: 0 auto;
     padding: 0 20px 0 20px;
     box-sizing: content-box;
+    position: relative;
 }
 @import "../scss/blocks/promo";
 @import "../scss/blocks/header";
@@ -19,5 +20,6 @@ html {
 @import "../scss/blocks/advantages";
 @import "../scss/blocks/consultation";
 @import "../scss/blocks/forms";
+@import "../scss/blocks/carousel";
 
 @import "../scss/base/media";

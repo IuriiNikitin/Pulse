@@ -64,6 +64,12 @@
         }
     }
 
+    .carousel {
+        &__prev, &__next {
+            display: none;
+        }
+    }
+
 }
 
 @media (max-width: 575.98px) {
