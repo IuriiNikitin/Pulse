@@ -8,6 +8,7 @@ html {
 }
 .container {
     max-width: 950px;
+    width: 85%;
     margin: 0 auto;
     padding: 0 20px 0 20px;
     box-sizing: content-box;
@@ -21,5 +22,7 @@ html {
 @import "../scss/blocks/consultation";
 @import "../scss/blocks/forms";
 @import "../scss/blocks/carousel";
+@import "../scss/blocks/catalog";
+@import "../scss/blocks/feed";
 
 @import "../scss/base/media";

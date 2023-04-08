@@ -1,0 +1,176 @@
+.catalog {
+    &__tabs {
+        padding: 0;
+        margin: 0;
+        margin-top: 50px;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        font-size: 18px;
+        color: #6B6B6B;
+        text-transform: uppercase;
+    }
+    &__tab {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 200px;
+        height: 50px;
+        margin: 0 5px;
+        border: 2px solid #D0D0D0;
+        transform: skew(-20deg);
+        cursor: pointer;
+        transition: .2s all;
+        &:hover {
+            border: 2px solid $main_color;
+        }
+        &_active {
+            color:#FFF;
+            background-color: $main_color;
+            border: none;
+        }
+        div {
+            transform: skew(20deg);
+        }
+    }
+    &__content {
+        margin-top: 57px;
+        display: none;
+        &_active {
+            // display: flex;
+            // flex-wrap: wrap;
+            // justify-content: flex-start;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+
+        }
+    }
+    &-item {
+        max-width: 300px;
+        width: 95%;
+        min-height: 440px;
+        border: 2px solid #E8E8E8;
+        padding: 20px;
+        margin: 0 8px;
+        margin-bottom: 16px;
+        overflow: hidden;
+
+        &__wrapper {
+            display: flex;
+            width: calc(200% + 40px);
+        }
+        &__content {
+            width: 50%;
+            margin-right: 20px;
+            transition: .5s all;
+            transform: translateX(calc(-100% - 40px));
+            &_active {
+                transform: translateX(0%);
+            }
+        }
+        &__list {
+            position: relative;
+            width: 50%;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+            color: #555555;
+            padding-left: 15px;
+            margin-left: 20px;
+            transform: translateX(0%);
+            transition: .5s all;
+            &_active {
+                transform: translateX(calc(-100% - 40px));
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                // padding-bottom: 20px;
+            }
+            li {
+                margin-bottom: 10px;
+                list-style: none;
+                position: relative;
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 8px;
+                    left: -15px;
+                    width: 5px;
+                    height: 5px;
+                    background-color:$main_color;
+                }
+            }
+        }
+        &__img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 200px;
+        }
+        &__title {
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+        }
+        &__subtitle {
+            font-weight: 300;
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+            line-height: 22px;
+        }
+        &__link {
+            display: block;
+            margin-top: 10px;
+            color: $main_color;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            &:hover {
+                color: $main_color; 
+            }
+        }
+        &__back {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block;
+            color: $main_color;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            &:hover {
+                color: $main_color; 
+            }
+        }
+        hr {
+            border-top: 1px solid;
+            margin: 20px 0;
+        }
+        &__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__old-price {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 14px;
+            text-decoration: line-through;
+            color: #555555;
+        }
+        &__price {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 20px;
+            margin-top: 2px;
+        }
+    }
+}
