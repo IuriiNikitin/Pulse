@@ -1,0 +1,39 @@
+.footer {
+    position: relative;
+    &__info {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 460px;
+        height: 270px;
+        background-color: $main_color;
+        padding: 50px 0;
+        color:#FFF;
+        text-align: center;
+    }
+    &__adress {
+        margin-bottom: 0;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    &__phone {
+        display: block;
+        margin-top: 35px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        color:#FFF;
+        text-decoration: none;
+        &:hover {
+            color:#FFF;
+        }
+    }
+    &__socials {
+        width: 210px;
+        margin: 0 auto;
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

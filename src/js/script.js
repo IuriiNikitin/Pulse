@@ -38,8 +38,13 @@ catalogLinks.forEach(catalogLink => {
     const content = e.target.parentNode.parentNode.querySelector("." + contentClass),
     list = e.target.parentNode.parentNode.querySelector("." + listClass);
 
-    content.classList.toggle(contentClass + "_active");
-    list.classList.toggle(listClass + "_active");
+    if(window.innerWidth >= 576) {
+      content.classList.toggle(contentClass + "_active");
+      list.classList.toggle(listClass + "_active");
+    } else {
+      console.log(list);
+    }
+
   });
 });
 
