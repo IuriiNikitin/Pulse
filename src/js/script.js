@@ -27,22 +27,35 @@ document.querySelector(".carousel__next").addEventListener("click", () => {
 // Catalog
 
 const catalog = document.querySelector(".catalog"),
+catalogItem = catalog.querySelectorAll(".catalog-item"),
 catalogLinks = catalog.querySelectorAll(".catalog-item__link , .catalog-item__back"),
 contentClass = "catalog-item__content",
 listClass = "catalog-item__list";
 
-catalogLinks.forEach(catalogLink => {
+catalogLinks.forEach((catalogLink , i) => {
   catalogLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const content = e.target.parentNode.parentNode.querySelector("." + contentClass),
-    list = e.target.parentNode.parentNode.querySelector("." + listClass);
+    const content = catalogItem[Math.trunc(i / 2)].querySelector("." + contentClass),
+    list = catalogItem[Math.trunc(i / 2)].querySelector("." + listClass);
 
     if(window.innerWidth >= 576) {
       content.classList.toggle(contentClass + "_active");
       list.classList.toggle(listClass + "_active");
     } else {
-      console.log(list);
+      const modal = overlay.querySelector("#about");
+      const title = content.querySelector(".catalog-item__title").innerText;
+      const subtitle = content.querySelector(".catalog-item__subtitle").innerText;
+      const src = content.querySelector("img").src;
+      const ul = list.querySelector("ul").innerHTML;
+
+      modal.querySelector(".modal__subtitle").innerText = title;
+      modal.querySelector("img").src = src;
+      modal.querySelector(".modal__descr").innerText = subtitle;
+      modal.querySelector("ul").innerHTML = ul;
+
+      overlay.classList.add("overlay_active");
+      modal.classList.add("modal_active");
     }
 
   });
@@ -65,3 +78,39 @@ tabs.forEach((tab, i) => {
 
   });
 });
+
+
+//Modals
+
+const overlay = document.querySelector(".overlay");
+const modals = overlay.querySelectorAll(".modal");
+const consultBtns = document.querySelectorAll("[data-modal=consultation]");
+const orderBtns = document.querySelectorAll("[data-modal=order]");
+
+consultBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const modal = overlay.querySelector("#consultation");
+    overlay.classList.add("overlay_active");
+    modal.classList.add("modal_active");
+  });
+});
+
+orderBtns.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    const modal = overlay.querySelector("#order");
+    const title = catalogItem[i].querySelector(".catalog-item__title").innerText;
+    modal.querySelector(".modal__descr").innerText = title;
+    overlay.classList.add("overlay_active");
+    modal.classList.add("modal_active");
+  });
+});
+
+modals.forEach(modal => {
+  const close = modal.querySelector(".modal__close");
+  close.addEventListener("click", () => {
+    overlay.classList.remove("overlay_active");
+    modal.classList.remove("modal_active");
+  });
+});
+
+//FormValidation

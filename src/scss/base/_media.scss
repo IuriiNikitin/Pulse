@@ -192,6 +192,9 @@
             &__title {
                 margin-top: 4px;
                 font-size: 14px;
+                br{
+                    display: inline;
+                }
             }
             &__subtitle {
                 display: none;
@@ -265,6 +268,16 @@
         }
         &__socials {
             margin-top: 20px;
+        }
+    }
+    .modal {
+        &__close {
+            top: 10px;
+            right: 10px;
+        }
+
+        &#about {
+
         }
     }
 }

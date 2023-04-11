@@ -118,6 +118,9 @@
             font-weight: 700;
             font-size: 16px;
             text-align: center;
+            br {
+                display: none;
+            }
         }
         &__subtitle {
             font-weight: 300;

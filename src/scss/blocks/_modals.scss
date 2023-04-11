@@ -1,0 +1,94 @@
+.overlay {
+    position: fixed;
+    display: none;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .56);
+    &_active {
+        display: block;
+    }
+}
+
+.modal {
+    display: none;
+    width: 90%;
+    max-width: 380px;
+    padding: 35px 40px 40px 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F2F2F2;
+    &_active {
+        display: block;
+    }
+    &__close {
+        font-size: 50px;
+        font-weight: 200;
+        width: 20px;
+        height: 20px;
+        color: $main_color;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        position: absolute;
+        top: 0;
+        right: -40px;
+    }
+    &__subtitle {
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+    }
+    &__descr {
+        font-weight: 700;
+        font-size: 14px;
+        text-align: center;
+    }
+    &#about {
+        max-height: 95vh;
+        overflow: scroll;
+
+        .modal {
+            &__descr {
+                margin-top: 15px;
+            }
+            &__img {
+                display: block;
+                margin: 0 auto;
+                margin-top: 15px;
+                height: 200px;
+                max-width: 100%;
+            }
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            margin-top: 15px;
+            font-size: 12px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            list-style: none;
+            position: relative;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 8px;
+                left: -15px;
+                width: 5px;
+                height: 5px;
+                background-color:$main_color;
+            }
+
+        }
+    }
+}
