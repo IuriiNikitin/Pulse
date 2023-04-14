@@ -44,8 +44,8 @@ catalogLinks.forEach((catalogLink , i) => {
       list.classList.toggle(listClass + "_active");
     } else {
       const modal = overlay.querySelector("#about");
-      const title = content.querySelector(".catalog-item__title").innerText;
-      const subtitle = content.querySelector(".catalog-item__subtitle").innerText;
+      const title = content.querySelector(".catalog-item__title").textContent;
+      const subtitle = content.querySelector(".catalog-item__subtitle").textContent;
       const src = content.querySelector("img").src;
       const ul = list.querySelector("ul").innerHTML;
 
@@ -98,7 +98,7 @@ consultBtns.forEach(btn => {
 orderBtns.forEach((btn, i) => {
   btn.addEventListener("click", () => {
     const modal = overlay.querySelector("#order");
-    const title = catalogItem[i].querySelector(".catalog-item__title").innerText;
+    const title = catalogItem[i].querySelector(".catalog-item__title").textContent;
     modal.querySelector(".modal__descr").innerText = title;
     overlay.classList.add("overlay_active");
     modal.classList.add("modal_active");
@@ -114,3 +114,48 @@ modals.forEach(modal => {
 });
 
 //FormValidation
+
+const formHandle = document.querySelectorAll('form');
+
+const validatorOptions = {
+  locale:"ru",
+  autoHideErrors: true,
+  messages: {
+    ru: {
+      name: {
+        empty: "Это обязательное поле",
+        incorrect: "Неправильное имя",
+      },
+      phone: {
+        empty: "Это обязательное поле",
+        incorrect: "Неправильный номер телефона",
+      },
+      email: {
+        empty: "Это обязательное поле",
+        incorrect: "Неправильный E-mail",
+      },
+      minlength: {
+        incorrect: "Слишком короткий номер телефона"
+      },
+      required: {
+        empty: "Это обязательное поле",
+      },
+    },
+  },
+};
+
+formHandle.forEach(form => {
+  new Validator(form, function (err, res) {
+    return res;
+}, validatorOptions);
+});
+
+
+//InputMask
+
+document.querySelectorAll("input[name=phone]").forEach(inputPhone => {
+  const phoneMask = IMask(
+    inputPhone, {
+      mask: '+{7}(000)000-00-00'
+    });
+});

@@ -78,9 +78,15 @@
             <div class="title title_left">Получите бесплатную консультацию<br> по подбору пульсометра </div>
             <div class="consultation__descr">Просто заполните форму заявки<br>и мы перезвоним вам в течении 10 минут</div>
             <form class="feed-form feed-form_mt36" action="#">
-                <input placeholder="Ваше имя" name="name" required type="text">
-                <input placeholder="Ваш телефон" name="phone" required type="tel">
-                <input placeholder="Ваш E-mail" name="email" required type="email">
+                <div class="feed-form__field">
+                    <input data-rule="name|required" placeholder="Ваше имя" name="name" type="text">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="phone|required|minlength-16" placeholder="Ваш телефон" name="phone" type="tel">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="email|required" placeholder="Ваш E-mail" name="email" type="email">
+                </div>
                 <button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
@@ -562,9 +568,15 @@
             <div class="modal__subtitle">Просто заполните форму заявки</div>
             <div class="modal__descr">и мы перезвоним вам в течении 10 минут</div>
             <form class="feed-form feed-form_mt26" action="#">
-                <input placeholder="Ваше имя" name="name" required type="text">
-                <input placeholder="Ваш телефон" name="phone" required type="tel">
-                <input placeholder="Ваш E-mail" name="email" required type="email">
+                <div class="feed-form__field">
+                    <input data-rule="name|required" placeholder="Ваше имя" name="name" type="text">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="phone|required|minlength-16" placeholder="Ваш телефон" name="phone" type="tel">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="email|required" placeholder="Ваш E-mail" name="email" type="email">
+                </div>
                 <button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
@@ -573,10 +585,16 @@
             <div class="modal__subtitle">Ваш заказ:</div>
             <div class="modal__descr">Пульсометр <br> Polar FT1</div>
             <form class="feed-form feed-form_mt26" action="#">
-                <input placeholder="Ваше имя" name="name" required type="text">
-                <input placeholder="Ваш телефон" name="phone" required type="tel">
-                <input placeholder="Ваш E-mail" name="email" required type="email">
-                <button class="button button_submit">купить</button>
+                <div class="feed-form__field">
+                    <input data-rule="name|required" placeholder="Ваше имя" name="name" type="text">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="phone|required|minlength-16" placeholder="Ваш телефон" name="phone" type="tel">
+                </div>
+                <div class="feed-form__field">
+                    <input data-rule="email|required" placeholder="Ваш E-mail" name="email" type="email">
+                </div>
+                <button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
         <div class="modal" id="thanks">
@@ -600,6 +618,7 @@
     </div>
     <script src="js/tiny-slider.js"></script>
     <script src="js/js-form-validator.min.js"></script>
+    <script src="js/imask.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
