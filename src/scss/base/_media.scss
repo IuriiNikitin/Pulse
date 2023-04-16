@@ -92,6 +92,13 @@
             width: 100%;
         }
     }
+    .pageup {
+        img {
+            &:hover {
+                opacity: 0.4;
+            }
+        }
+    }
 
 }
 
@@ -276,8 +283,8 @@
             right: 10px;
         }
 
-        &#about {
+        // &#about {
 
-        }
+        // }
     }
 }

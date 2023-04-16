@@ -39,10 +39,8 @@
     &__content {
         margin-top: 57px;
         display: none;
+        animation-duration: 1.2s;
         &_active {
-            // display: flex;
-            // flex-wrap: wrap;
-            // justify-content: flex-start;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             justify-items: center;

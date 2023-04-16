@@ -1,4 +1,52 @@
 "use strict";
+import catalogItemsData from "./catalog-items-data.js";
+
+// CatalogRender
+
+const catalogContent = document.querySelectorAll(".catalog__content");
+
+catalogContent.forEach(content => {
+
+  const data = catalogItemsData.filter(item => item.purpose === content.dataset.purpose);
+
+  data.forEach(item => {
+
+    let list = "<ul>"
+
+    item.list.forEach(listItem => {
+      list += `<li>${listItem}</li>`;
+    });
+
+    list += `</ul><a href="#" class="catalog-item__back">НАЗАД</a>`;
+
+    const catalogItem = `
+    <div class="catalog-item">
+      <div class="catalog-item__wrapper">
+          <div class="catalog-item__content catalog-item__content_active">
+              <img src=${item.img} alt="item_img" class="catalog-item__img">
+              <div class="catalog-item__title">${item.name} <br> ${item.model}</div>
+              <div class="catalog-item__subtitle">${item.subtitle}</div>
+              <a href="#" class="catalog-item__link">ПОДРОБНЕЕ</a>
+          </div>
+          <div class="catalog-item__list">
+            ${list}
+          </div>
+      </div>
+      <hr>
+      <div class="catalog-item__footer">
+          <div class="catalog-item__prices">
+              <div class="catalog-item__old-price">${item.oldPrice} руб.</div>
+              <div class="catalog-item__price">${item.price} руб.</div>
+          </div>
+          <button class="button button_mini" data-modal="order">КУПИТЬ</button>
+      </div>
+    </div>`;
+
+    content.innerHTML += catalogItem;
+  });
+});
+
+
 
 // Slider
 
@@ -159,3 +207,34 @@ document.querySelectorAll("input[name=phone]").forEach(inputPhone => {
       mask: '+{7}(000)000-00-00'
     });
 });
+
+
+//upButton
+
+const pageUp = document.querySelector(".pageup");
+
+
+window.addEventListener("scroll", () => {
+  if(window.pageYOffset > 1600) {
+    pageUp.classList.add("pageup_active", "animate__fadeIn");
+    pageUp.classList.remove("animate__fadeOut");
+  } else {
+    pageUp.classList.remove("animate__fadeIn");
+    pageUp.classList.add("animate__fadeOut");
+    pageUp.onanimationend = (e) => {
+      if (e.animationName === "fadeOut") {
+        pageUp.classList.remove("pageup_active");
+      }
+    };
+  }
+});
+
+
+
+//wow
+
+new WOW().init();
+
+
+
+	

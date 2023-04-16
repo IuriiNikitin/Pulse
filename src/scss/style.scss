@@ -1,3 +1,8 @@
+@import "../scss/libs/bootstrap-reboot.min";
+@import "../scss/libs/font";
+@import "../scss/libs/tiny-slider";
+
+@import "../scss/base/animation";
 @import "../scss/base/variables";
 @import "../scss/base/mixins";
 * {
@@ -26,5 +31,6 @@ html {
 @import "../scss/blocks/feed";
 @import "../scss/blocks/footer";
 @import "../scss/blocks/modals";
+@import "../scss/blocks/pageup";
 
 @import "../scss/base/media";
