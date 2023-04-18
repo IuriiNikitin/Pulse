@@ -1,6 +1,23 @@
 "use strict";
 import catalogItemsData from "./catalog-items-data.js";
 
+function fadeIn(element) {
+  const elementClass = element.classList[0];
+  element.classList.add(elementClass + "_active","animate__animated", "animate__fadeIn");
+  element.classList.remove("animate__fadeOut");
+};
+
+function fadeOut(element) {
+  const elementClass = element.classList[0];
+  element.classList.remove("animate__fadeIn");
+  element.classList.add("animate__fadeOut");
+  element.onanimationend = (e) => {
+    if (e.animationName === "fadeOut") {
+      element.classList.remove(elementClass + "_active");
+    }
+  };
+};
+
 // CatalogRender
 
 const catalogContent = document.querySelectorAll(".catalog__content");
@@ -12,13 +29,14 @@ catalogContent.forEach(content => {
   data.forEach(item => {
 
     let list = "<ul>"
-
     item.list.forEach(listItem => {
       list += `<li>${listItem}</li>`;
     });
-
     list += `</ul><a href="#" class="catalog-item__back">НАЗАД</a>`;
 
+    const formatedPrice = new Intl.NumberFormat("ru").format(item.price);
+    const formatedOldPrice = new Intl.NumberFormat("ru").format(item.oldPrice);
+    
     const catalogItem = `
     <div class="catalog-item">
       <div class="catalog-item__wrapper">
@@ -35,8 +53,8 @@ catalogContent.forEach(content => {
       <hr>
       <div class="catalog-item__footer">
           <div class="catalog-item__prices">
-              <div class="catalog-item__old-price">${item.oldPrice} руб.</div>
-              <div class="catalog-item__price">${item.price} руб.</div>
+              <div class="catalog-item__old-price">${formatedOldPrice} руб.</div>
+              <div class="catalog-item__price">${formatedPrice} руб.</div>
           </div>
           <button class="button button_mini" data-modal="order">КУПИТЬ</button>
       </div>
@@ -102,8 +120,8 @@ catalogLinks.forEach((catalogLink , i) => {
       modal.querySelector(".modal__descr").innerText = subtitle;
       modal.querySelector("ul").innerHTML = ul;
 
-      overlay.classList.add("overlay_active");
-      modal.classList.add("modal_active");
+      fadeIn(overlay);
+      fadeIn(modal);
     }
 
   });
@@ -138,8 +156,8 @@ const orderBtns = document.querySelectorAll("[data-modal=order]");
 consultBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     const modal = overlay.querySelector("#consultation");
-    overlay.classList.add("overlay_active");
-    modal.classList.add("modal_active");
+    fadeIn(overlay);
+    fadeIn(modal);
   });
 });
 
@@ -148,16 +166,16 @@ orderBtns.forEach((btn, i) => {
     const modal = overlay.querySelector("#order");
     const title = catalogItem[i].querySelector(".catalog-item__title").textContent;
     modal.querySelector(".modal__descr").innerText = title;
-    overlay.classList.add("overlay_active");
-    modal.classList.add("modal_active");
+    fadeIn(overlay);
+    fadeIn(modal);
   });
 });
 
 modals.forEach(modal => {
   const close = modal.querySelector(".modal__close");
   close.addEventListener("click", () => {
-    overlay.classList.remove("overlay_active");
-    modal.classList.remove("modal_active");
+    fadeOut(overlay);
+    fadeOut(modal);
   });
 });
 
@@ -216,19 +234,11 @@ const pageUp = document.querySelector(".pageup");
 
 window.addEventListener("scroll", () => {
   if(window.pageYOffset > 1600) {
-    pageUp.classList.add("pageup_active", "animate__fadeIn");
-    pageUp.classList.remove("animate__fadeOut");
+    fadeIn(pageUp);
   } else {
-    pageUp.classList.remove("animate__fadeIn");
-    pageUp.classList.add("animate__fadeOut");
-    pageUp.onanimationend = (e) => {
-      if (e.animationName === "fadeOut") {
-        pageUp.classList.remove("pageup_active");
-      }
-    };
+    fadeOut(pageUp);
   }
 });
-
 
 
 //wow
