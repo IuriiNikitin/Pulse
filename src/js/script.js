@@ -268,8 +268,7 @@ function submitData(form) {
 
 
   // some code to push data to server
-  // console.log(obj);
-  // console.log(form);
+  console.log(obj);
 
   const thanks = overlay.querySelector("#thanks");
   const isModal = form.parentNode.classList.contains("modal");
