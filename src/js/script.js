@@ -1,19 +1,27 @@
 "use strict";
 import catalogItemsData from "./catalog-items-data.js";
 
-function fadeIn(element) {
+function fadeIn(element, callback) {
   const elementClass = element.classList[0];
   element.classList.add(elementClass + "_active","animate__animated", "animate__fadeIn");
+  element.onanimationend = (e) => {
+    if (e.animationName === "fadeIn") {
+      element.classList.remove("animate__fadeIn");
+      if(callback) {callback();}
+    }
+  }
   element.classList.remove("animate__fadeOut");
 };
 
-function fadeOut(element) {
+function fadeOut(element, callback) {
   const elementClass = element.classList[0];
   element.classList.remove("animate__fadeIn");
   element.classList.add("animate__fadeOut");
   element.onanimationend = (e) => {
     if (e.animationName === "fadeOut") {
       element.classList.remove(elementClass + "_active");
+      element.classList.remove("animate__fadeOut");
+      if(callback) {callback();}
     }
   };
 };
@@ -212,6 +220,10 @@ const validatorOptions = {
 
 formHandle.forEach(form => {
   new Validator(form, function (err, res) {
+    if(res) {
+      submitData(form);
+      return false;
+    }
     return res;
 }, validatorOptions);
 });
@@ -234,7 +246,9 @@ const pageUp = document.querySelector(".pageup");
 
 window.addEventListener("scroll", () => {
   if(window.pageYOffset > 1600) {
-    fadeIn(pageUp);
+    if(getComputedStyle(pageUp).display === "none") {
+      fadeIn(pageUp);
+    }
   } else {
     fadeOut(pageUp);
   }
@@ -246,5 +260,34 @@ window.addEventListener("scroll", () => {
 new WOW().init();
 
 
+// Submit
 
-	
+function submitData(form) {
+  const formData = new FormData(form);
+  const obj = Object.fromEntries(formData.entries());
+
+
+  // some code to push data to server
+  // console.log(obj);
+  // console.log(form);
+
+  const thanks = overlay.querySelector("#thanks");
+  const isModal = form.parentNode.classList.contains("modal");
+
+
+ 
+  if(isModal) {
+    fadeOut(form.parentNode, () => {
+      form.reset();
+      fadeIn(thanks);
+    });
+  } else {
+    fadeIn(overlay);
+    fadeIn(thanks, () => {
+      form.reset();
+    });
+  }
+
+
+ 
+}
